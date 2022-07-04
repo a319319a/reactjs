@@ -1,23 +1,26 @@
-//import React and ReactDOM libraries
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
+import { faker } from "@faker-js/faker";
 
-//Get a reference to the div with ID root
-const el = document.getElementById("root");
+const App = () => {
+  return (
+    <div className="ui container comments">
+      <div className="comment">
+        <a href="/" className="avatar">
+          <img alt="avatar" src={faker.image.avatar()} />
+        </a>
+        <div className="content">
+          <a href="/" className="author">
+            Sam
+          </a>
+        </div>
+        <div className="metadata">
+          <span className="date">today at 6.00pm</span>
+        </div>
+        <div className="text">Nice Blog</div>
+      </div>
+    </div>
+  );
+};
 
-//tel react to tak control of the element
-const root = ReactDOM.createRoot(el);
-
-//Create a component
-function App() {
-  let message = "Bye there!";
-  if (Math.random() > 0.5) {
-    message = "Hello There!";
-  }
-  const date = new Date();
-  const time = date.toLocaleTimeString();
-  return <h1>{new Date().toLocaleTimeString()}</h1>;
-}
-
-//show the component on the screen
-root.render(<App />);
+ReactDOM.render(<App />, document.querySelector("#root"));
